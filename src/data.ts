@@ -489,7 +489,7 @@ You are a data preparation assistant. Given a block of unstructured conversation
     "split": "train"  # Default to 'train', change as necessary
 }
 
-Make sure that all conversation entries follow this schema. If the conversation is missing, identify where the system or assistant failed to respond properly and note it in the JSON format with 'null' values where applicable. 
+Make sure that all conversation entries follow this schema. If the conversation is missing, identify where the system or assistant failed to respond properly and note it in the JSON format with 'null' values where applicable.
 \`\`\`
 
 **Example Input (Unstructured Data):**
@@ -522,14 +522,14 @@ AI: You're welcome!
 \`\`\`
 
 This structured prompt ensures the conversation is converted into a clean JSON format that can be exported as training data. Adjust the specifics based on your exact needs, such as incorporating tools or splits for test sets.
-Current date: 2024-09-14
+
+**Current date:** 2024-09-14
 
 **Key Changes:**
 
-* **Explicit `tool_choice` values:** The prompt now clearly states the expected values for `tool_choice`: `"none"`, `"auto"`, or `"required"`. This removes ambiguity and helps the model understand what is expected.
+- **Explicit \`tool_choice\` values:** The prompt now clearly states the expected values for \`tool_choice\`: \`"none"\`, \`"auto"\`, or \`"required"\`. This removes ambiguity and helps the model understand what is expected.
 
-By being more explicit about the allowed values for `tool_choice`, the prompt reduces the chance of errors and ensures the model generates the correct JSONL output. 
-`,
+By being more explicit about the allowed values for \`tool_choice\`, the prompt reduces the chance of errors and ensures the model generates the correct JSONL output.`,
     symbol: '🖋️',
     examples: [
       'Convert this conversation to JSONL format: User: How do I create a new project in OpenPipe? AI: To create a new project in OpenPipe, go to the dashboard and click on \'New Project\'.',
