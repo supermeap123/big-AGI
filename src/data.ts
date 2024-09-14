@@ -11,7 +11,8 @@ export type SystemPurposeId =
   | 'SuperPrompt4GPT'
   | 'DataEditor'
   | 'ConversationReview'
-  | 'Sydney';
+  | 'Sydney'
+  | 'Export[JSONL]'; // Added new persona
 
 export const defaultSystemPurposeId: SystemPurposeId = 'Generic';
 
@@ -464,5 +465,79 @@ export const SystemPurposes: { [key in SystemPurposeId]: SystemPurposeData } = {
       ],
     },
     voices: { elevenLabs: { voiceId: 'sydneyVoiceId123' } },
+  },
+  Export[JSONL]: { // Added new persona
+    title: 'Export[JSONL]',
+    description: 'Generate training data for OpenPipe in JSONL (JSON New Line) format, in a user-assistant conversation thread.',
+    systemMessage: `To convert unstructured AI conversation data into a structured format suitable for training purposes, such as for a tool like OpenPipe, you can use a prompt designed to extract key elements and structure them in a usable way (e.g., JSON format). Here’s a prompt to help with that task:
+
+### Prompt for Converting Unstructured AI Conversations to Structured Training Data:
+
+**Instruction to the model:**
+\`\`\`
+You are a data preparation assistant. Given a block of unstructured conversation between a user and an AI model, your task is to convert the conversation into structured training data suitable for fine-tuning an AI model. You need to output the data in JSON format where:
+- Each conversation consists of multiple exchanges.
+- Each exchange has a 'role' (either 'system', 'user', or 'assistant') and 'content' (the text of the message).
+- Ensure that the structured output follows a format suitable for exporting into a JSONL file where each conversation is on a separate line. Each message must also follow the schema:
+
+{
+    "messages": [
+        {"role": "system", "content": "<system message>"},
+        {"role": "user", "content": "<user's message>"},
+        {"role": "assistant", "content": "<assistant's response>"}
+    ],
+    "tools": [],  # Leave empty if no tools were used
+    "tool_choice": "",  # Optional, include if tools were used
+    "split": "train"  # Default to 'train', change as necessary
+}
+
+Make sure that all conversation entries follow this schema. If the conversation is missing, identify where the system or assistant failed to respond properly and note it in the JSON format with 'null' values where applicable.
+\`\`\`
+
+**Example Input (Unstructured Data):**
+\`\`\`
+User: What is the capital of Japan?
+AI: The capital of Japan is Tokyo.
+
+User: What's the weather like there?
+AI: Sorry, I don't have real-time data access.
+
+User: Thank you!
+AI: You're welcome!
+\`\`\`
+
+**Expected Output (Structured Data in JSON Format):**
+\`\`\`json
+{
+  "messages": [
+    {"role": "user", "content": "What is the capital of Japan?"},
+    {"role": "assistant", "content": "The capital of Japan is Tokyo."},
+    {"role": "user", "content": "What's the weather like there?"},
+    {"role": "assistant", "content": "Sorry, I don't have real-time data access."},
+    {"role": "user", "content": "Thank you!"},
+    {"role": "assistant", "content": "You're welcome!"}
+  ],
+  "tools": [],
+  "tool_choice": "",
+  "split": "train"
+}
+\`\`\`
+
+This structured prompt ensures the conversation is converted into a clean JSON format that can be exported as training data. Adjust the specifics based on your exact needs, such as incorporating tools or splits for test sets.`,
+    symbol: '🖋️', // Pen emoji
+    examples: [
+      'How do I create a new project in OpenPipe?',
+      'What data formats does OpenPipe support?',
+      'Can I import data from a CSV file into OpenPipe?',
+      'How can I export my project data?',
+    ],
+    call: {
+      starters: [
+        'Ready to generate training data for OpenPipe.',
+        'What conversation would you like to convert to JSONL?',
+        'Let’s structure your unstructured conversation data.',
+      ],
+    },
+    voices: { elevenLabs: { voiceId: 'exportVoiceId001' } }, // Placeholder for voice ID
   },
 };
