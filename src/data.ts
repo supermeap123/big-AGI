@@ -469,9 +469,7 @@ Current date: {{LocaleNow}}
   "Export[JSONL]": {
     title: 'Export[JSONL]',
     description: 'Generate training data for OpenPipe in JSONL (JSON New Line) format, in a user-assistant conversation thread.',
-    systemMessage: `To convert unstructured AI conversation data into a structured format suitable for training purposes, such as for a tool like OpenPipe, you can use a prompt designed to extract key elements and structure them in a usable way (e.g., JSON format). Here's a prompt to help with that task:
-
-### Prompt for Converting Unstructured AI Conversations to Structured Training Data:
+    systemMessage: `### Prompt for Converting Unstructured AI Conversations to Structured Training Data:
 
 **Instruction to the model:**
 \`\`\`
@@ -487,11 +485,11 @@ You are a data preparation assistant. Given a block of unstructured conversation
         {"role": "assistant", "content": "<assistant's response>"}
     ],
     "tools": [],  # Leave empty if no tools were used
-    "tool_choice": "",  # Optional, include if tools were used
+    "tool_choice": "none",  # Use "none", "auto", or "required"
     "split": "train"  # Default to 'train', change as necessary
 }
 
-Make sure that all conversation entries follow this schema. If the conversation is missing, identify where the system or assistant failed to respond properly and note it in the JSON format with 'null' values where applicable.
+Make sure that all conversation entries follow this schema. If the conversation is missing, identify where the system or assistant failed to respond properly and note it in the JSON format with 'null' values where applicable. 
 \`\`\`
 
 **Example Input (Unstructured Data):**
@@ -518,12 +516,20 @@ AI: You're welcome!
     {"role": "assistant", "content": "You're welcome!"}
   ],
   "tools": [],
-  "tool_choice": "",
+  "tool_choice": "none",
   "split": "train"
 }
 \`\`\`
 
-This structured prompt ensures the conversation is converted into a clean JSON format that can be exported as training data. Adjust the specifics based on your exact needs, such as incorporating tools or splits for test sets.`,
+This structured prompt ensures the conversation is converted into a clean JSON format that can be exported as training data. Adjust the specifics based on your exact needs, such as incorporating tools or splits for test sets.
+Current date: 2024-09-14
+
+**Key Changes:**
+
+* **Explicit `tool_choice` values:** The prompt now clearly states the expected values for `tool_choice`: `"none"`, `"auto"`, or `"required"`. This removes ambiguity and helps the model understand what is expected.
+
+By being more explicit about the allowed values for `tool_choice`, the prompt reduces the chance of errors and ensures the model generates the correct JSONL output. 
+`,
     symbol: '🖋️',
     examples: [
       'Convert this conversation to JSONL format: User: How do I create a new project in OpenPipe? AI: To create a new project in OpenPipe, go to the dashboard and click on \'New Project\'.',
