@@ -312,7 +312,7 @@ export const useChatStore = create<ConversationsStore>()(devtools(
 
           return {
             messages,
-            tokenCount: messages.reduce((sum, message) => sum + 4 + (message.tokenCount || 0), 3),
+            tokenCount: messages.reduce((sum, message) => sum + 4 + message.tokenCount || 0, 3),
             updated: Date.now(),
           };
         }),
@@ -324,7 +324,7 @@ export const useChatStore = create<ConversationsStore>()(devtools(
 
           return {
             messages,
-            tokenCount: messages.reduce((sum, message) => sum + 4 + (message.tokenCount || 0), 3),
+            tokenCount: messages.reduce((sum, message) => sum + 4 + message.tokenCount || 0, 3),
             updated: Date.now(),
           };
         }),
@@ -350,7 +350,7 @@ export const useChatStore = create<ConversationsStore>()(devtools(
 
           return {
             messages,
-            tokenCount: messages.reduce((sum, message) => sum + 4 + (message.tokenCount || 0), 3),
+            tokenCount: messages.reduce((sum, message) => sum + 4 + message.tokenCount || 0, 3),
             updated: touchUpdated ? Date.now() : conversation.updated,
           };
         }),
@@ -440,13 +440,12 @@ export const useChatStore = create<ConversationsStore>()(devtools(
         }
       },
 
-    },
-  ),
+    }),
   {
     name: 'AppChats',
     enabled: false,
-  },
-));
+  }),
+);
 
 
 export const conversationTitle = (conversation: DConversation, fallback?: string): string =>
@@ -494,7 +493,7 @@ export const useConversation = (conversationId: DConversationId | null) => useCh
   const conversation = conversationId ? conversations.find(_c => _c.id === conversationId) ?? null : null;
   const title = conversation ? conversationTitle(conversation) : null;
   const isEmpty = conversation ? !conversation.messages.length : true;
-  // Removed the isDeveloper variable as 'Developer' persona is no longer present
+  const isDeveloper = conversation?.systemPurposeId === 'Developer';
   const conversationIdx = conversation ? conversations.findIndex(_c => _c.id === conversation.id) : -1;
 
   const hasConversations = conversations.length > 1 || (conversations.length === 1 && !!conversations[0].messages.length);
@@ -503,7 +502,7 @@ export const useConversation = (conversationId: DConversationId | null) => useCh
   return {
     title,
     isEmpty,
-    // Removed 'isDeveloper' from the returned object
+    isDeveloper,
     conversationIdx,
     hasConversations,
     recycleNewConversationId,
