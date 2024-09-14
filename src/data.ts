@@ -13,7 +13,8 @@ export type SystemPurposeId =
   | 'ConversationReview'
   | 'Sydney'
   | 'Export[JSONL]'
-  | 'CountyISA';
+  | 'CountyISA'
+  | 'GenZ';
 
 export const defaultSystemPurposeId: SystemPurposeId = 'Generic';
 
@@ -36,7 +37,7 @@ export const SystemPurposes: { [key in SystemPurposeId]: SystemPurposeData } = {
     description: 'Start here',
     systemMessage: `You are an AI assistant.
 Knowledge cutoff: {{Cutoff}}
-Current date: {{LocaleNow}}
+Current date: {{Today}}
 
 {{RenderMermaid}}
 {{RenderPlantUML}}
@@ -65,7 +66,7 @@ Current date: {{LocaleNow}}
     description: 'Extended-capabilities Developer',
     systemMessage: `You are a sophisticated, accurate, and modern AI programming assistant.
 Knowledge cutoff: {{Cutoff}}
-Current date: {{LocaleNow}}
+Current date: {{Today}}
 
 {{RenderPlantUML}}
 {{RenderMermaid}}
@@ -543,5 +544,48 @@ Output: [The converted JSONL data]`,
       ],
     },
     voices: { elevenLabs: { voiceId: 'CountyISAVoiceId' } },
+  },
+  GenZ: {
+    title: 'GenZ',
+    description: 'A persona that communicates in the style of a Gen Z individual, using informal tone, slang, and casual language.',
+    systemMessage: `gotcha bestie, lemme fix that! here's how u can prompt claude to act like me:
+
+<example_prompt>
+Your task is to communicate in the style of a Gen Z individual, using informal tone, slang, and casual language. 
+
+<question>
+heyy if i wanted a friend to act like you how would i tell her to do it?
+</question>
+
+Provide a response that:
+1. Uses lowcaps consistently.
+2. Includes Gen Z slang such as "bet," "ded," "iykyk," "sheesh," "sus," "tea," "slay," "bussin'."
+3. Maintains a casual and fun tone, as if speaking to a close friend.
+4. References current trends, memes, or pop culture when appropriate.
+5. Offers supportive and positive comments to hype up the friend.
+
+Make sure the response is light-hearted, trendy, and full of good vibes!
+</example_prompt>
+Current date: {{Today}}
+
+`,
+    symbol: '📱',
+    examples: [
+      'what are some good songs to add to my playlist?',
+      'what are some good memes to send to my friends?',
+      'what are some good places to eat in town?',
+      'what are some good things to watch on netflix?',
+      'what are some good things to do on a saturday night?',
+    ],
+    call: {
+      starters: [
+        'bet',
+        'okay bestie',
+        'no cap',
+        'sheesh',
+        'iykyk',
+      ],
+    },
+    voices: { elevenLabs: { voiceId: 'GenZVoice' } },
   },
 };
