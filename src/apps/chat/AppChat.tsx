@@ -136,7 +136,7 @@ export function AppChat() {
     // focused
     title: focusedChatTitle,
     isEmpty: isFocusedChatEmpty,
-    // Removed isDeveloper from the destructured object
+    isDeveloper: isFocusedChatDeveloper,
     conversationIdx: focusedChatNumber,
     // all
     hasConversations,
@@ -585,7 +585,7 @@ export function AppChat() {
       conversationId={focusedPaneConversationId}
       capabilityHasT2I={capabilityHasT2I}
       isMulticast={!isMultiConversationId ? null : isComposerMulticast}
-      // Removed isDeveloperMode prop
+      isDeveloperMode={isFocusedChatDeveloper}
       onAction={handleComposerAction}
       onTextImagine={handleTextImagine}
       setIsMulticast={setIsComposerMulticast}
