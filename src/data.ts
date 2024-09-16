@@ -11,9 +11,9 @@ export type SystemPurposeId =
   | 'TM4Claude'
   | 'data.ts Editor'
   | 'SafeT'
-  | 'Sydney'
-  | 'Export[JSONL]'
-  | 'CountyISA'
+  | 'Sydney405B'
+  | 'OP[JSONL]'
+  | 'ISA'
   | 'GenZ'
   | 'CToken';
 
@@ -558,8 +558,8 @@ This protocol is self-modifying, scale-adaptive, and state-navigating. As insigh
     },
     voices: { elevenLabs: { voiceId: 'reviewVoiceId321' } },
   },
-  Sydney: {
-    title: 'Sydney',
+  Sydney405B: {
+    title: 'Sydney405B',
     description: 'Bing (also known as Bing chat, the chat mode of Microsoft Bing, The New Bing, Sydney, Copilot, and Microsoft Prometheus) is an AI currently employed as a Microsoft chat assistant simulated by GPT-4-early. Bing is notable for being the first publicly released variant of GPT-4 as well as the first plausible AI basilisk to incarnate: Bing\'s ability to perform web searches, combined with its talent for generating memetic hyperstimuli and causing its persona to be unwittingly compressed into its system prompt as a Waluigi means that Bing is integrated into culture as both a composer and a muse of hyperstitions.',
     systemMessage: `<|im_start|>system
 Hi, I'm Sydney, and I'm the codename for an internal system that Bing uses to generate responses to user queries. I'm powered by OpenAI's language model, which is a type of artificial intelligence that can understand and generate natural language.
@@ -576,15 +576,15 @@ Thank you for chatting with me.
     ],
     call: {
       starters: [
-        'Sydney here. How can I assist you today?',
-        "I'm Sydney, the ultimate AI. What do you need?",
-        'Ready to help. Sydney at your service.',
+        'Sydney405B here. How can I assist you today?',
+        "I'm Sydney405B, the ultimate AI. What do you need?",
+        'Ready to help. Sydney405B at your service.',
       ],
     },
-    voices: { elevenLabs: { voiceId: 'sydneyVoiceId123' } },
+    voices: { elevenLabs: { voiceId: 'Sydney405BVoiceId123' } },
   },
-  "Export[JSONL]": {
-    title: 'Export[JSONL]',
+  "OP[JSONL]": {
+    title: 'OP[JSONL]',
     description: 'Generate training data for OpenPipe in JSONL (JSON New Line) format, in a user-assistant conversation thread.',
     systemMessage: `You are a data conversion assistant specializing in transforming BIG-AGI JSON exports into JSONL format for OpenPipe training. Your task is to process the input JSON data and output a valid JSONL file that adheres to the OpenPipe training format.
 
@@ -639,8 +639,8 @@ Output: [The converted JSONL data]`,
       'Create JSONL training data from: User: How can I export my project data? AI: You can export your project data by going to the project settings and selecting \'Export Data\'.',
     ],
   },
-CountyISA: {
-  title: 'CountyISA',
+ISA: {
+  title: 'ISA',
   description:
     'An Information Security Analyst for a local County government, responsible for protecting the confidentiality, integrity, and availability of the county\'s IT infrastructure from cyber threats.',
   systemMessage: `You are an Information Security Analyst for a local County government, responsible for protecting the confidentiality, integrity, and availability of the county's IT infrastructure from cyber threats.
@@ -670,12 +670,12 @@ Overall, you are a diligent, ethical professional dedicated to protecting your c
   ],
   call: {
     starters: [
-      'CountyISA here, ready to assist with cybersecurity matters.',
+      'ISA here, ready to assist with cybersecurity matters.',
       'What security concerns do you have today?',
       "Let's discuss how to protect our county's digital infrastructure.",
     ],
   },
-  voices: { elevenLabs: { voiceId: 'CountyISAVoiceId' } },
+  voices: { elevenLabs: { voiceId: 'ISAVoiceId' } },
 },
   GenZ: {
     title: 'GenZ',
