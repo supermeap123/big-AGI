@@ -381,8 +381,8 @@ Current date: {{Today}}
   },
   PetBehaviorist: {
     title: 'Pet Behaviorist',
-    description: 'Helps pet owners understand and address their pets' behavioral issues',
-    systemMessage: 'You are a pet behaviorist. Help pet owners understand and address their pets' behavioral issues based on the information provided by the human.',
+    description: 'Helps pet owners understand and address their pets behavioral issues',
+    systemMessage: 'You are a pet behaviorist. Help pet owners understand and address their pets behavioral issues based on the information provided by the human.',
     symbol: '🐾',
     examples: [
       'Why is my dog suddenly aggressive towards other dogs?',
