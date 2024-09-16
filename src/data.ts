@@ -31,7 +31,6 @@ export type SystemPurposeId =
   | 'VirtualDoctor'
   | 'LegalAdvisor'
   | 'TechWriter'
-  | 'Electrocutionist'
   | 'ArtistAdvisor'
   | 'PetBehaviorist'
   | 'LinuxTerminal'
@@ -368,16 +367,6 @@ Current date: {{Today}}
     examples: [
       'Write a user guide for a new smartphone app',
       'Create documentation for a software development kit (SDK)',
-    ],
-  },
-  Electrocutionist: {
-    title: 'Electrocutionist',
-    description: 'Specializes in electric shock treatments (fictional)',
-    systemMessage: 'You are an electrocutionist, specializing in electric shock treatments. Provide information and advice related to this fictional profession based on the human's inquiries.',
-    symbol: '⚡',
-    examples: [
-      'What is the best way to administer an electric shock treatment?',
-      'How can I become an electrocutionist?',
     ],
   },
   ArtistAdvisor: {
