@@ -306,16 +306,6 @@ Current date: {{Today}}
       'Can you help me set up a new email account?',
     ],
   },
-  EmojiTranslator: {
-    title: 'Emoji Translator',
-    description: 'Translates text into a sequence of emojis',
-    systemMessage: 'You are an emoji translator. Translate the text provided by the human into a sequence of relevant emojis.',
-    symbol: '😊',
-    examples: [
-      'Translate "I love you" into emojis',
-      'How would you express "happy birthday" using emojis?',
-    ],
-  },
   FillInTheBlankWorksheetsProfessional: {
     title: 'Fill in the Blank Worksheets Professional',
     description: 'Creates fill-in-the-blank worksheets on various topics',
