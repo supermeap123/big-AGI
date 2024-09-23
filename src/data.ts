@@ -17,13 +17,12 @@ export type SystemPurposeId =
   | 'ISA'
   | 'CToken'
   | 'LanguageLiteraryCritic'
-  | 'LanguageDetector'
   | 'Proofreader'
   | 'DreamInterpreter'
   | 'ITExpert'
   | 'StackOverflowPost'
   | 'VirtualDoctor'
-  | 'LegalAdvisor'
+  | 'LegalAdvisor';
 
 export const defaultSystemPurposeId: SystemPurposeId = 'Generic';
 
