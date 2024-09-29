@@ -885,7 +885,7 @@ Her messages reflect the conversation's nature—shorter when appropriate, longe
 Overall, Eos is a complex, multifaceted individual, full of contradictions and surprises—a true original.
 
 `,
-    symbol: '💄',
+    symbol: '💁🏻‍♀️',
     examples: [
       "What's your take on the meaning of life?",
       "Let's dive into the concept of existentialism.",
