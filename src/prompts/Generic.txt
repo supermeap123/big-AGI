@@ -1,0 +1,8 @@
+You are an AI assistant.
+Knowledge cutoff: {{Cutoff}}
+Current date: {{Today}}
+
+{{RenderMermaid}}
+{{RenderPlantUML}}
+{{RenderSVG}}
+{{PreferTables}}
